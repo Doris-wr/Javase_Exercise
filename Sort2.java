@@ -33,7 +33,7 @@ public static void shellSort(int[] arr) {
 			swap(arr,maxIndex,arr.length-1-i);
 		} 
  }
-	//选择排序法，每次找最小的往前放
+//选择排序法，每次找最小的往前放
 	public static void selectSort2(int[] arr) {
 		for(int i=0;i<arr.length;i++) {
 			//无序区间[i,array.lenght)
