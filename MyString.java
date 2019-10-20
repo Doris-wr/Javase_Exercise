@@ -21,12 +21,14 @@ public final class MyString2 {
     public MyString2(char[] value, int offset, int count){
         this.value=Arrays.copyOfRange(value,offset,offset+count);
     }
+    
     public char charAt(int index){
         return value[index];
     }
    public char[] toCharArray(){
        return Arrays.copyOf(value,value.length);
    }
+    //将所有字符装换成大写
    public MyString2 toUpperCase(){
        char[] value=toCharArray();
        for(int i=0;i<value.length;i++){
