@@ -25,7 +25,7 @@ public final class MyString2 {
         return value[index];
     }
    public char[] toCharArray(){
-       return Arrays.copyOfRange(value,value.length);
+       return Arrays.copyOf(value,value.length);
    }
    public MyString2 toUpperCase(){
        char[] value=toCharArray();
