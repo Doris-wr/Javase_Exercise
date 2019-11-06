@@ -1,0 +1,38 @@
+//  判断是否有环
+    public boolean hasCycle(){
+        Node fast=head;
+        Node slow=head;
+        while(fast!=null&&fast.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
+            if(slow==fast){
+                break;
+            }
+        }
+        if(fast==null||fast.next==null){
+            return false;
+        }
+        return true;
+    }
+//  找环的入口点
+    public Node detectCycle(){
+        Node fast=head;
+        Node slow=head;
+        while(fast!=null&&fast.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
+            if(slow==fast){
+                break;
+            }
+        }
+        //没有环
+        if(fast==null||fast.next==null){
+            return null;
+        }
+        slow=head;
+        while(slow!=fast){
+            fast=fast.next;
+            slow=slow.next;
+        }
+        return fast;
+    }
