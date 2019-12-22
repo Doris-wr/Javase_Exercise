@@ -1,0 +1,78 @@
+一、超类：
+字节流： InputStream（读入流） OutputStream(写出流）
+字符流： Reader（字符 读入流） Writer （字符写出流）
+
+二、文件操作流
+字节流： FileInputStream ，FileOutputStream
+字符流： FileReader, FileWriter(用法与字节流基本相同，不写）
+
+        //1.指定要读 的文件目录及名称
+        File file =new File("文件路径");
+        //2.创建文件读入流对象
+        FileInputStream fis =new FileInputStream(file);
+        //3.定义结束标志,可用字节数组读取
+        int i =0 ;
+        while((i = fis.read())!=-1){ 
+            //i 就是从文件中读取的字节，读完后返回-1
+        }
+        //4.关闭流
+        fis.close();
+        //5.处理异常
+
+
+
+        //1.指定要写到的文件目录及名称
+        File file =new File("文件路径");
+        //2.创建文件读入流对象
+    FileOutputStream fos =new FileOutputStream(file);
+        //3.定义结束标志
+        fos.write(要写出的字节或者字节数组);
+        //4.刷新和关闭流
+        fos.flush();
+        fos.close();
+        //5.处理异常
+
+三、缓冲流：
+字节缓冲流： BufferedInputStream,BufferedOutputStream
+字符缓冲流：BufferedReader ,BufferedWriter
+缓冲流是对流的操作的功能的加强，提高了数据的读写效率。既然缓冲流是对流的功能和读写效率的加强和提高，所以在创建缓冲流的对象时应该要传入要加强的流对象。
+
+//1.指定要读 的文件目录及名称
+        File file =new File("文件路径");
+        //2.创建文件读入流对象
+        FileInputStream fis =new FileInputStream(file);
+        //3.创建缓冲流对象加强fis功能
+BufferedInputStream bis =new BufferedInputStream(fis); 
+        //4.定义结束标志,可用字节数组读取
+        int i =0 ;
+        while((i = bis.read())!=-1){ 
+            //i 就是从文件中读取的字节，读完后返回-1
+        }
+        //5.关闭流
+        bis.close();
+        //6.处理异常
+1
+        //1.指定要写到的文件目录及名称
+        File file =new File("文件路径");
+        //2.创建文件读入流对象
+    FileOutputStream fos =new FileOutputStream(file);
+        //3.创建缓冲流对象加强fos功能
+BufferedOutputStream bos=new BufferedOutputStream(fos);
+        //4.向流中写入数据
+        bos.write(要写出的字节或者字节数组);
+        //5.刷新和关闭流
+        bos.flush();
+        bos.close();
+        //6.处理异常
+
+由以上看出流的操作基本相同，此流与文件流操作是几乎一样的只是将文件流作为参数传入缓冲流的构造方法中堆文件流读写文件的功能进行加强
+注1：在字符读入缓冲流BufferedReader 中还提供了读一行的方法 readLine() 可以读取一行文本
+在字符写出缓冲流BufferedWriter 中还提供了写人一个行行分隔符的方法writeLine(),用于写出时换行
+注2：此处用到的是GoF设计模式中的装潢（装饰）模式
+注3：创建缓冲流的对象的装逼模式：
+
+BufferedInputStream bis =new BufferedInputStream(
+new FileInputStream(new File("文件路径")));     
+————————————————
+版权声明：本文为CSDN博主「zhao_yu_lei」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/zhao_yu_lei/article/details/72823874
