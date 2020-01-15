@@ -1,0 +1,36 @@
+package 栈和队列.面试题.最小栈;
+
+
+import java.util.Stack;
+public class MinStack {
+    Stack<Integer>dataStack;
+    Stack<Integer>minStack;
+    public MinStack() {
+        dataStack = new Stack();
+        minStack = new Stack();
+    }
+    //入栈
+    public void push(int x){
+        //数据每次向数据栈中入一个
+        dataStack.push(x);
+        //最小栈空或者元素小于最小栈的栈顶元素，则最先栈入一个元素
+        if(minStack.empty()||x<=minStack.peek()){
+            minStack.push(x);
+        }
+}
+    //出栈
+    public void pop(){
+        if(dataStack.peek().equals(minStack.peek())){
+            minStack.pop();
+        }
+        dataStack.pop();
+    }
+    //获取栈顶元素
+    public int top(){
+        return dataStack.peek();
+    }
+    //获取最小值
+    public int getMin(){
+        return minStack.peek();
+    }
+}
