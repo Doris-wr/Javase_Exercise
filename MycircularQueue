@@ -1,0 +1,61 @@
+package 栈和队列.面试题.设计循环队列;
+
+public class MycircularQueue {
+    private int[] array=null;
+    private int capacity;
+    private int size=0;
+    private int front=0;
+    private int rear=0;
+    public MycircularQueue(int k) {
+        array=new int[k];
+        capacity=k;
+    }
+
+    //模拟入队列
+    public boolean enQueue(int value) {
+        if (size == capacity) {
+            return false;
+        }
+        array[rear++]=value;
+        rear%=capacity;
+        size++;
+        return true;
+    }
+    //模拟出队列
+    public boolean deQueue(){
+        if (isEmpty()) {
+            return false;
+        }
+        front++;
+        if(front==capacity){
+            front=0;
+        }
+        size--;
+        return true;
+    }
+
+    //判空
+    public boolean isEmpty() {
+        return 0==size;
+    }
+
+    //判满
+    public boolean isFull() {
+        return size==capacity;
+    }
+    //获取队头元素
+    public int Front() {
+        if (isEmpty()) {
+            return -1;
+        }
+        return array[front];
+    }
+
+    //获取队尾元素
+    public int Rear() {
+        if (isEmpty()) {
+            return -1;
+        }
+        return array[(rear-1+capacity)%capacity];
+    }
+}
