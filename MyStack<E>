@@ -1,0 +1,46 @@
+package 栈和队列.面试题.
+//实现栈
+public class MyStack<E> {
+    private E[] array=(E[])new Object[100];
+    private int size=0;
+    public void push(E e) {
+        if (size == 100) {
+            return;
+        }
+        array[size++] = e;
+        //array[size]=e;  size++;
+    }
+    public E pop(){
+       if(empty()){
+           return null;
+       }
+       E e=array[size-1];
+       size--;
+       return e;
+    }
+    E peek(){
+        if(empty()){
+            return null;
+        }
+        return array[size-1];
+    }
+    boolean  empty(){
+        return 0==size;
+    }
+    int size(){
+        return size;
+    }
+    public static void main(String[] args) {
+        MyStack<Integer> ms=new MyStack<>();
+        ms.push(1);
+        ms.push(2);
+        ms.push(3);
+        ms.push(4);
+        ms.push(5);
+        System.out.println(ms.size());
+        System.out.println(ms.peek());
+        ms.pop();
+        ms.pop();
+        System.out.println(ms.peek());
+    }
+}
